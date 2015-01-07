@@ -49,7 +49,7 @@ Install [ggplot for python](http://ggplot.yhathq.com/) first
 
 Then execute the following codes:
 
-
+import pyCountrySize
 from ggplot import *
 (x_picked, y_picked)=("LP", "PPPGDP") #assigning LP to x axis, PPPGDP to y axis
 p_d = ggplot(aes(x=x_picked, y=y_picked, label=pyCountrySize.sizec.index.values), data=pyCountrySize.sizec)
