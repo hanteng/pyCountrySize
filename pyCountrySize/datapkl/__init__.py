@@ -5,7 +5,7 @@ from __future__ import (absolute_import, division, print_function,
 import pandas as pd
 import os
 
-__all__ = ["LP","PPPGDP","IP","IH", "sizec", "meta"]
+__all__ = ["LP","PPPGDP","IP","IH", "sizec", "meta", "description"]
 __all__ = [str(u) for u in __all__]
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -30,9 +30,3 @@ description={'LP': "Population in 2013 (in millions) from IMF World Economic Out
       'PPPGDP': "Economy Size in 2013 (in billions) from IMF World Economic Outlook (WEO) database, October 2014",\
       'IP': "Internet Population in 2013 (in millions) derived from ITU 2014 report and IMF World Economic Outlook (WEO) database, October 2014",\
       'IH': "Internet Hosts in 2012 (in millions) from CIA the World Factbook", }
-
-##diamonds = pd.read_csv(os.path.join(_ROOT, "diamonds.csv"))
-##mtcars = pd.read_csv(os.path.join(_ROOT, "mtcars.csv"))
-##meat = pd.read_csv(os.path.join(_ROOT, "meat.csv"), parse_dates=[0])
-##movies = pd.read_csv(os.path.join(_ROOT, "movies.csv"))
-##pageviews = pd.read_csv(os.path.join(_ROOT, "pageviews.csv"), parse_dates=[0])

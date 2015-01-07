@@ -8,5 +8,5 @@ from __future__ import (absolute_import, division, print_function,
 # version of ggplot.
 __version__ = '0.0.1'
 
-from .datapkl import (LP, PPPGDP, IP, IH, sizec, meta)
+from .datapkl import (LP, PPPGDP, IP, IH, sizec, meta, description)
 #from .datapkl import *
