@@ -8,31 +8,31 @@ The data selection and example graphs will be explained as [an exercise explaine
 
 #INSTALL
 
-pip install git+https://github.com/hanteng/pyCountrySize.git
+	pip install git+https://github.com/hanteng/pyCountrySize.git
 
 or
 
-pip install git+git://github.com/hanteng/pyCountrySize.git
+	pip install git+git://github.com/hanteng/pyCountrySize.git
 
 
 In the event that you don't have git installed, try this:
 
-pip install https://github.com/hanteng/pyCountrySize/zipball/master
+	pip install https://github.com/hanteng/pyCountrySize/zipball/master
 
 
 #Usage
 1. run python
 2. excute the following codes
-'''
+```
 import pyCountrySize
 pyCountrySize.LP.head()
 pyCountrySize.LP.mean()
 pyCountrySize.meta['LP']
 pyCountrySize.description['LP']
-'''
+```
 
 #Outcome
-'''
+```
 >>> pyCountrySize.LP.head()
 ISO
 AFG    30.552
@@ -47,7 +47,7 @@ Name: LP, dtype: float64
 u'Population in 2013 (IMF WEO)'
 >>> pyCountrySize.description['LP']
 u'Population in 2013 (in millions) from IMF World Economic Outlook (WEO) database, October 2014'
-'''
+```
 
 #Visualization using ggplot
 1. Install [ggplot for python](http://ggplot.yhathq.com/) first
