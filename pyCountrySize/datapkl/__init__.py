@@ -26,6 +26,11 @@ meta={'LP': "Population in 2013 (IMF WEO)",\
       'IP': "Internet Population in 2013 (ITU)",\
       'IH': "Internet Hosts in 2012 (CIA)", }
 
+description={'LP': "Population in 2013 (in millions) from IMF World Economic Outlook (WEO) database, October 2014",\
+      'PPPGDP': "Economy Size in 2013 (in billions) from IMF World Economic Outlook (WEO) database, October 2014",\
+      'IP': "Internet Population in 2013 (in millions) derived from ITU 2014 report and IMF World Economic Outlook (WEO) database, October 2014",\
+      'IH': "Internet Hosts in 2012 (in millions) from CIA the World Factbook", }
+
 ##diamonds = pd.read_csv(os.path.join(_ROOT, "diamonds.csv"))
 ##mtcars = pd.read_csv(os.path.join(_ROOT, "mtcars.csv"))
 ##meat = pd.read_csv(os.path.join(_ROOT, "meat.csv"), parse_dates=[0])
