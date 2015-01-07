@@ -66,4 +66,6 @@ p=p_d+geom_point()+\
            theme_matplotlib()+ theme(axis_text_x  = element_text(angle = 40, hjust = 1))
 print p
 ```
+![PPPGDP as dependent variable in y axis while LP as independent variable in x axis](https://raw.githubusercontent.com/hanteng/pyCountrySize/master/pyCountrySize/output_PPPGDP_LP.png)
+
 More refined examples can be found in the demograph_*.py scripts, with output graph files  *.png in the folder of [pyCountrySize](https://github.com/hanteng/pyCountrySize/tree/master/pyCountrySize)
