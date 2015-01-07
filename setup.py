@@ -9,13 +9,15 @@ setup(
     author_email="hanteng@gmail.com",
     url="https://github.com/hanteng/pyCountrySize/",
     license="GPLv3",
-    package_dir={"pyCountrySize": "pyCountrySize"},
+    packages = ['pyCountrySize'],
+    package_dir={"pyCountrySize": ""},
+    package_data={'pyCountrySize': ['datapkl/*.pkl','datapkl/*.py']},
     description="pyCountrySize for python",
     # run pandoc --from=markdown --to=rst --output=README.rst README.md
     long_description=open("README.rst").read(),
     # numpy is here to make installing easier... Needs to be at the last position,
     # as that's the first installed with "python setup.py install"
-    install_requires=["pandas", ""],
+    install_requires=["pandas", "numpy"],
     classifiers=['Intended Audience :: Science/Research',
                  'Intended Audience :: Developers',
                  'Programming Language :: Python',
