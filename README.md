@@ -18,6 +18,3 @@ pip install git+git://github.com/hanteng/pyCountrySize.git
 In the event that you don't have git installed, try this:
 
 pip install https://github.com/hanteng/pyCountrySize/zipball/master
-or
-
-pip install https://github.com/hanteng/pyCountrySize/tarball/master

@@ -5,13 +5,14 @@ from setuptools import find_packages, setup
 
 setup(
     name="pyCountrySize",
+    packages = ['pyCountrySize'],
     author="Hanteng Liao",
     author_email="hanteng@gmail.com",
     url="https://github.com/hanteng/pyCountrySize/",
+    download_url = 'https://github.com/hanteng/pyCountrySize/zipball/master',
     license="GPLv3",
-    packages = ['pyCountrySize'],
-    package_dir={"pyCountrySize": ""},
-    package_data={'pyCountrySize': ['datapkl/*.pkl','datapkl/*.py']},
+    package_dir={"pyCountrySize": "pyCountrySize"},
+    package_data={'pyCountrySize': ['pyCountrySize/datapkl/*.pkl','pyCountrySize/datapkl/*.py']},
     description="pyCountrySize for python",
     # run pandoc --from=markdown --to=rst --output=README.rst README.md
     long_description=open("README.rst").read(),
