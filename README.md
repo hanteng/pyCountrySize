@@ -54,7 +54,7 @@ u'Population in 2013 (in millions) from IMF World Economic Outlook (WEO) databas
 
 2. Then execute the following codes:
 
-'''
+```
 import pyCountrySize
 from ggplot import *
 (x_picked, y_picked)=("LP", "PPPGDP") #assigning LP to x axis, PPPGDP to y axis
@@ -65,6 +65,5 @@ p=p_d+geom_point()+\
            labs(x = ":\n".join([x_picked, pyCountrySize.meta[x_picked]]), y = ":\n".join([y_picked, pyCountrySize.meta[y_picked]])) +\
            theme_matplotlib()+ theme(axis_text_x  = element_text(angle = 40, hjust = 1))
 print p
-'''
-
+```
 More refined examples can be found in the demograph_*.py scripts, with output graph files  *.png in the folder of [pyCountrySize](https://github.com/hanteng/pyCountrySize/tree/master/pyCountrySize)
