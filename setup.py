@@ -3,9 +3,23 @@
 import os
 from setuptools import find_packages, setup
 
+## From ggplot setup.py
+def extract_version():
+    """
+    Extracts version values from the main matplotlib __init__.py and
+    returns them as a dictionary.
+    """
+    with open('pyCountrySize/__init__.py') as fd:
+        for line in fd.readlines():
+            if (line.startswith('__version__')):
+                exec(line.strip())
+    return locals()["__version__"]
+
+
 setup(
     name="pyCountrySize",
     packages = ['pyCountrySize'],
+    version=extract_version(),
     author="Hanteng Liao",
     author_email="hanteng@gmail.com",
     url="https://github.com/hanteng/pyCountrySize/",
