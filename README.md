@@ -6,7 +6,7 @@ python scripts to load Country Size datasets for research/analytics
 The data selection and example graphs will be explained as [an exercise explained here in a blog post](http://people.oii.ox.ac.uk/hanteng/to.be.determined), researchers are encouraged to modify the codes for their own research questions.
 
 
-INSTALL
+#INSTALL
 
 pip install git+https://github.com/hanteng/pyCountrySize.git
 
@@ -20,15 +20,19 @@ In the event that you don't have git installed, try this:
 pip install https://github.com/hanteng/pyCountrySize/zipball/master
 
 
-==Usage==
-python
+#Usage
+1. run python
+2. excute the following codes
+'''
 import pyCountrySize
 pyCountrySize.LP.head()
 pyCountrySize.LP.mean()
 pyCountrySize.meta['LP']
 pyCountrySize.description['LP']
+'''
 
-==Outcome==
+#Outcome
+'''
 >>> pyCountrySize.LP.head()
 ISO
 AFG    30.552
@@ -43,12 +47,14 @@ Name: LP, dtype: float64
 u'Population in 2013 (IMF WEO)'
 >>> pyCountrySize.description['LP']
 u'Population in 2013 (in millions) from IMF World Economic Outlook (WEO) database, October 2014'
+'''
 
-==Visualization using ggplot==
-Install [ggplot for python](http://ggplot.yhathq.com/) first
+#Visualization using ggplot
+1. Install [ggplot for python](http://ggplot.yhathq.com/) first
 
-Then execute the following codes:
+2. Then execute the following codes:
 
+'''
 import pyCountrySize
 from ggplot import *
 (x_picked, y_picked)=("LP", "PPPGDP") #assigning LP to x axis, PPPGDP to y axis
@@ -59,6 +65,6 @@ p=p_d+geom_point()+\
            labs(x = ":\n".join([x_picked, pyCountrySize.meta[x_picked]]), y = ":\n".join([y_picked, pyCountrySize.meta[y_picked]])) +\
            theme_matplotlib()+ theme(axis_text_x  = element_text(angle = 40, hjust = 1))
 print p
-
+'''
 
 More refined examples can be found in the demograph_*.py scripts, with output graph files  *.png in the folder of [pyCountrySize](https://github.com/hanteng/pyCountrySize/tree/master/pyCountrySize)
