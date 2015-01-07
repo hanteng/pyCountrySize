@@ -15,6 +15,18 @@ def extract_version():
                 exec(line.strip())
     return locals()["__version__"]
 
+def get_package_data():
+    baseline_images = [
+        'pyCountrySize/%s/*' % x
+        for x in os.listdir('pyCountrySize')]
+
+    return {
+        'pyCountrySize':
+        baseline_images +
+        [
+            "datapkl/*.pkl"
+        ]} 
+
 
 setup(
     name="pyCountrySize",
@@ -26,7 +38,7 @@ setup(
     download_url = 'https://github.com/hanteng/pyCountrySize/zipball/master',
     license="GPLv3",
     package_dir={"pyCountrySize": "pyCountrySize"},
-    package_data={'pyCountrySize': ['pyCountrySize/datapkl/*.pkl','pyCountrySize/datapkl/*.py']},
+    package_data=get_package_data(),
     description="pyCountrySize for python",
     # run pandoc --from=markdown --to=rst --output=README.rst README.md
     long_description=open("README.rst").read(),
