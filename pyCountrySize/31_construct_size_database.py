@@ -32,7 +32,16 @@ for i,f in enumerate(filename_list):
 
 dir_db = Config.get("Directory",'database')
 fn_db = Config.get("output",'filename')
-    
+
+## Sorting
+df = df.sort_index(by=['ISO', 'ISO2'], ascending=[True, True])
+
+## Set ISO index
+df = df.set_index('ISO')
+
+## Duplicate index column
+df[df.index.name]=df.index
+
 df.to_pickle(os.path.join(dir_db, fn_db))
 
 

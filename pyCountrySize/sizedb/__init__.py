@@ -21,12 +21,12 @@ IPv4=sizec['IPv4']
 
 meta={'LP': "Population in 2013 (IMF WEO)",\
       'PPPGDP': "Economy Size in 2013 (IMF WEO)",\
-      'IP': "Internet Population in 2013 (ITU)",\
+      'IPop': "Internet Population in 2013 (ITU)",\
       'IH': "Internet Hosts in 2012 (CIA)",\
       'IPv4': "Internet Addresses in 2015 (CIPB)", }
 
 description={'LP': "Population in 2013 (in millions) from IMF World Economic Outlook (WEO) database, October 2014",\
       'PPPGDP': "Economy Size in 2013 (in billions) from IMF World Economic Outlook (WEO) database, October 2014",\
-      'IP': "Internet Population in 2013 (in millions) derived from ITU 2014 report and IMF World Economic Outlook (WEO) database, October 2014",\
+      'IPop': "Internet Population in 2013 (in millions) derived from ITU 2014 report and IMF World Economic Outlook (WEO) database, October 2014",\
       'IH': "Internet Hosts in 2012 (in millions) from CIA the World Factbook",\
       'IPv4': "Internet Addresses in 2015 (in millions) from CIPB", }
