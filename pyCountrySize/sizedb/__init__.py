@@ -5,28 +5,28 @@ from __future__ import (absolute_import, division, print_function,
 import pandas as pd
 import os
 
-__all__ = ["LP","PPPGDP","IP","IH", "sizec", "meta", "description"]
+__all__ = ["LP","PPPGDP","IPop","IH","IPv4","sizec", "meta", "description"]
 __all__ = [str(u) for u in __all__]
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
-file_name="WEO_ITU_CIA_size"
-filename_suffix="pkl"
-
 from os.path import basename, join, splitext
-sizec=pd.read_pickle(os.path.join(_ROOT, "WEO_ITU_CIA_size.pkl"))
+sizec=pd.read_pickle(os.path.join(_ROOT, "size.pkl"))
 
 LP=sizec['LP']
 PPPGDP=sizec['PPPGDP']
-IP=sizec['IP']
+IPop=sizec['IPop']
 IH=sizec['IH']
+IPv4=sizec['IPv4']
 
 meta={'LP': "Population in 2013 (IMF WEO)",\
       'PPPGDP': "Economy Size in 2013 (IMF WEO)",\
       'IP': "Internet Population in 2013 (ITU)",\
-      'IH': "Internet Hosts in 2012 (CIA)", }
+      'IH': "Internet Hosts in 2012 (CIA)",\
+      'IPv4': "Internet Addresses in 2015 (CIPB)", }
 
 description={'LP': "Population in 2013 (in millions) from IMF World Economic Outlook (WEO) database, October 2014",\
       'PPPGDP': "Economy Size in 2013 (in billions) from IMF World Economic Outlook (WEO) database, October 2014",\
       'IP': "Internet Population in 2013 (in millions) derived from ITU 2014 report and IMF World Economic Outlook (WEO) database, October 2014",\
-      'IH': "Internet Hosts in 2012 (in millions) from CIA the World Factbook", }
+      'IH': "Internet Hosts in 2012 (in millions) from CIA the World Factbook",\
+      'IPv4': "Internet Addresses in 2015 (in millions) from CIPB", }
