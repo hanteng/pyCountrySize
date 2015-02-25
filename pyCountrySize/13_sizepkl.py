@@ -12,6 +12,8 @@ dir_outcome = Config.get("Directory",'outcome')
 fn_suffix = Config.get("Filename",'suffix')
 
 fn_input=Config.get("datasource{0}".format(datasource_sn),'filename')
+subject_picked=Config.get("datasource{0}".format(datasource_sn),'subject_picked')
+year_picked=Config.get("datasource{0}".format(datasource_sn),'year_picked')
 
 import os.path
 
@@ -29,11 +31,15 @@ df_size=df.copy(deep=True)
 df_size=df_size.drop('IH_old',1)
 
 ## Duplicate index column
-df_size[df_size.index.name]=df_size.index
+## df_size[df_size.index.name]=df_size.index
+
+## Change column name to year
+l=list(df_size.columns)
+l[[i for i,x in enumerate(l) if subject_picked in x][0]]=int(year_picked)
+df_size.columns=l
 
 ## Output size pkl
-fn_ouput="_".join(["size"]+[x for x in df_size.columns if x[0:3]<>"ISO"])
+fn_output="_".join(["size",subject_picked])
 
-df_size.to_pickle(os.path.join(dir_outcome, os.path.splitext(os.path.basename(fn_input))[0] + "." + fn_suffix))
-df_size.to_pickle(os.path.join(dir_outcome, fn_ouput + "." + fn_suffix))
+df_size.to_pickle(os.path.join(dir_outcome, fn_output + "." + fn_suffix))
 

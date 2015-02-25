@@ -13,11 +13,11 @@ _ROOT = os.path.abspath(os.path.dirname(__file__))
 from os.path import basename, join, splitext
 sizec=pd.read_pickle(os.path.join(_ROOT, "size.pkl"))
 
-LP=sizec['LP']
-PPPGDP=sizec['PPPGDP']
-IPop=sizec['IPop']
-IH=sizec['IH']
-IPv4=sizec['IPv4']
+LP=sizec['LP'][2013]
+PPPGDP=sizec['PPPGDP'][2013]
+IPop=sizec['IPop'][2013]
+IH=sizec['IH'][2012]
+IPv4=sizec['IPv4'][2015]
 
 meta={'LP': "Population in 2013 (IMF WEO)",\
       'PPPGDP': "Economy Size in 2013 (IMF WEO)",\

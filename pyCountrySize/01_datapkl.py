@@ -60,4 +60,62 @@ df.set_index(['ISO', 'Subject'], inplace=True)
 #test=df.query('ISO == "TWN"')['2013']
 #print test[0:3]
 
+## Change column names that look like integer, integers
+def integerization(x):
+    try:
+        return int(x)
+    except:
+        return x
+
+df.columns=[integerization(x) for x in list(df.columns)]
+
 df.to_pickle(os.path.join(dir_inprocess, os.path.splitext(os.path.basename(fn_input))[0] + "." + fn_suffix))
+
+##>>> df.head()
+##               WEO      Country                       Subject_Descriptor  \
+##ISO Subject                                                                
+##AFG NGDP_R     512  Afghanistan  Gross domestic product, constant prices   
+##    NGDP_RPCH  512  Afghanistan  Gross domestic product, constant prices   
+##    NGDP       512  Afghanistan   Gross domestic product, current prices   
+##    NGDPD      512  Afghanistan   Gross domestic product, current prices   
+##    NGDP_D     512  Afghanistan         Gross domestic product, deflator   
+##
+##                                                   Subject_Notes  \
+##ISO Subject                                                        
+##AFG NGDP_R     Expressed in billions of national currency uni...   
+##    NGDP_RPCH  Annual percentages of constant price GDP are y...   
+##    NGDP       Expressed in billions of national currency uni...   
+##    NGDPD      Values are based upon GDP in national currency...   
+##    NGDP_D     The GDP deflator is derived by dividing curren...   
+##
+##                           Units     Scale  \
+##ISO Subject                                  
+##AFG NGDP_R     National currency  Billions   
+##    NGDP_RPCH     Percent change       NaN   
+##    NGDP       National currency  Billions   
+##    NGDPD           U.S. dollars  Billions   
+##    NGDP_D                 Index       NaN   
+##
+##                                                   Country_Notes  1980  1981  \
+##ISO Subject                                                                    
+##AFG NGDP_R     Source: National Statistical Office Latest act...   NaN   NaN   
+##    NGDP_RPCH  See notes for:  Gross domestic product, consta...   NaN   NaN   
+##    NGDP       Source: National Statistical Office Latest act...   NaN   NaN   
+##    NGDPD      See notes for:  Gross domestic product, curren...   NaN   NaN   
+##    NGDP_D     See notes for:  Gross domestic product, consta...   NaN   NaN   
+##
+##               1982          ...               2011      2012      2013  \
+##ISO Subject                  ...                                          
+##AFG NGDP_R      NaN          ...            386.368   440.336   456.172   
+##    NGDP_RPCH   NaN          ...              6.479    13.968     3.596   
+##    NGDP        NaN          ...            836.222  1033.590  1148.110   
+##    NGDPD       NaN          ...             17.890    20.296    20.735   
+##    NGDP_D      NaN          ...            216.432   234.728   251.684   
+##
+##                   2014      2015      2016      2017      2018      2019  \
+##ISO Subject                                                                 
+##AFG NGDP_R      470.947   492.083   516.838   542.993   571.601   603.538   
+##    NGDP_RPCH     3.239     4.488     5.031     5.060     5.269     5.587   
+##    NGDP       1248.660  1378.500  1526.440  1682.610  1858.130  2057.320   
+##    NGDPD        21.706    23.227    24.787    26.380    28.117    30.028   
+##    NGDP_D      265.139   280.136   295.342   309.878   325.075   340.876  

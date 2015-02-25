@@ -69,10 +69,9 @@ df['IPv4']=[locale.atoi(x) for x in df['IPv4']]
 dir_countryname = Config.get("Directory",'countryname')
 file_name_cn= Config.get("countryname",'mapping')  #"country_name.xls"
 
-xl_cn = pd.ExcelFile(os.path.join(dir_countryname,file_name_cn))
-df_cn = xl_cn.parse('ITU')
-
-iso_mapping=dict(zip(df_cn['ISO2'],df_cn['ISO']))
+df_cn = pd.io.excel.read_excel(os.path.join(dir_countryname,file_name_cn), na_values=["NaN"], sheetname='CIPB', keep_default_na=False)
+df_cn['ISO2']=df_cn['ISO']
+iso_mapping=dict(zip(df_cn['ISO2'],df_cn['ISO_final']))
 
 df['ISO']=[iso_mapping.get(x,"_"+x) for x in df['ISO']]
 
@@ -80,3 +79,12 @@ df['ISO']=[iso_mapping.get(x,"_"+x) for x in df['ISO']]
 df=df.set_index("ISO")               #set index
 
 df.to_pickle(os.path.join(dir_inprocess, os.path.splitext(os.path.basename(fn_input))[0] + "." + fn_suffix))
+
+##>>> df.head()
+##       Country_CIPB     IPv4
+##ISO                         
+##AFG     AFGHANISTAN   161004
+##ALB         ALBANIA   350406
+##DZA         ALGERIA  3705440
+##ASM  AMERICAN SAMOA     6400
+##AND         ANDORRA    37680
