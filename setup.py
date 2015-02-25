@@ -24,8 +24,8 @@ def get_package_data():
         'pyCountrySize':
         baseline_images +
         [
+            "sizedb/*.py",
             "sizedb/*.pkl", 
-            "sizedb/*.py"
             "datapkl/*.pkl", 
             "sizepkl/*.pkl"
         ]} 
