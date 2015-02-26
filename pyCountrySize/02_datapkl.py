@@ -38,7 +38,7 @@ df_cn = df_cn.set_index('country_name_ITU')
 
 ## CHANGing data types
 df=df.convert_objects(convert_numeric=True)
-df=df[range(2000,2012)].astype(float)
+df=df[range(2000,2013+1)].astype(float)
 
 ## Join two dataframes so that country codes are available to use
 df=df.join(df_cn)
