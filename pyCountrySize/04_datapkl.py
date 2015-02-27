@@ -75,6 +75,11 @@ iso_mapping=dict(zip(df_cn['ISO2'],df_cn['ISO_final']))
 
 df['ISO']=[iso_mapping.get(x,"_"+x) for x in df['ISO']]
 
+## Correcting Kosovo country code to the below sources:
+# Kosovo XK	XKS
+# CIA https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
+# CLDP supplementalData.xml
+
 ## Set Index 
 df=df.set_index("ISO")               #set index
 
