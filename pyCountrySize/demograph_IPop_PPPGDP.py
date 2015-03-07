@@ -27,9 +27,11 @@ mpl.rcParams["figure.subplot.right"] = 0.97
 mpl.rcParams["figure.subplot.bottom"] = 0.20
 mpl.rcParams["figure.figsize"] = [8, 6]
 
-(x_picked, y_picked)=("LP", "IP")
+(x_picked, y_picked)=("PPPGDP", "IPop")
 
-p_d = ggplot(aes(x=x_picked, y=y_picked, label=pyCountrySize.sizec.index.values), data=pyCountrySize.sizec)
+dslice=pyCountrySize.sizec.loc[['IPop','PPPGDP'],:,2013].dropna()
+
+p_d = ggplot(aes(x=x_picked, y=y_picked, label=dslice.index.values), data=dslice)
 
 p=p_d+geom_point()+\
            geom_text(aes(hjust = 0, vjust = 0, size=10, color='darkblue'))+\

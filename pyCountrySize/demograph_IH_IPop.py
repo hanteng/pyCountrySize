@@ -27,14 +27,16 @@ mpl.rcParams["figure.subplot.right"] = 0.97
 mpl.rcParams["figure.subplot.bottom"] = 0.20
 mpl.rcParams["figure.figsize"] = [8, 6]
 
-(x_picked, y_picked)=("PPPGDP", "IP")
+(x_picked, y_picked)=("IPop", "IH")
 
-p_d = ggplot(aes(x=x_picked, y=y_picked, label=pyCountrySize.sizec.index.values), data=pyCountrySize.sizec)
+dslice=pyCountrySize.sizec.loc[['IH','IPop'],:,2012].dropna()
+
+p_d = ggplot(aes(x=x_picked, y=y_picked, label=dslice.index.values), data=dslice)
 
 p=p_d+geom_point()+\
            geom_text(aes(hjust = 0, vjust = 0, size=10, color='darkblue'))+\
            geom_smooth(aes(x=x_picked, y=y_picked), method='lm', se=False, color='grey')+\
-           labs(x = ":\n".join([x_picked, pyCountrySize.meta[x_picked]]), y = ":\n".join([y_picked, pyCountrySize.meta[y_picked]])) +\
+           labs(x = ":\n".join([x_picked, pyCountrySize.meta[x_picked].replace("2013","2012")]), y = ":\n".join([y_picked, pyCountrySize.meta[y_picked]])) +\
            theme_matplotlib()+ theme(axis_text_x  = element_text(angle = 40, hjust = 1))
 
 #print p
