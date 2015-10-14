@@ -2,6 +2,7 @@
 #歧視無邊，回頭是岸。鍵起鍵落，情真情幻。
 import os
 from setuptools import find_packages, setup
+import codecs
 
 ## From ggplot setup.py
 def extract_version():
@@ -9,7 +10,7 @@ def extract_version():
     Extracts version values from the main matplotlib __init__.py and
     returns them as a dictionary.
     """
-    with open('pyCountrySize/__init__.py') as fd:
+    withcodecs.open('pyCountrySize/__init__.py', "r", "utf-8") as fd:
         for line in fd.readlines():
             if (line.startswith('__version__')):
                 exec(line.strip())
