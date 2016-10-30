@@ -2,8 +2,8 @@
 #歧視無邊，回頭是岸。鍵起鍵落，情真情幻。
 datasource_sn=2
 
-import ConfigParser
-Config = ConfigParser.ConfigParser()
+import configparser
+Config = configparser.ConfigParser()
 Config.read("config.ini")
 
 dir_source = Config.get("Directory", 'source')
@@ -11,7 +11,9 @@ dir_inprocess =  Config.get("Directory",'inprocess')
 dir_outcome = Config.get("Directory",'outcome')
 fn_suffix = Config.get("Filename",'suffix')
 
-fn_input=Config.get("datasource{0}".format(datasource_sn),'filename')
+fn_input = Config.get("datasource{0}".format(datasource_sn),'filename')
+year_range = Config.get("datasource{0}".format(datasource_sn),'year_range')
+y1,y2 = eval(year_range)
 
 import os.path
 
@@ -20,7 +22,7 @@ import pandas as pd
 df = pd.io.excel.read_excel(os.path.join(dir_source,fn_input), na_values=["NaN"], sheetname=0, keep_default_na=False)
 
 ## REMOVing unneeded data
-df=df.iloc[:,0:14]  #slicing notes columns off the dataframe
+df=df.iloc[:,0:y2-y1+1]  #slicing notes columns off the dataframe
 colnames=df.iloc[0] 
 df.columns=colnames.astype(int) #renaming columns
 df=df.iloc[1:,]     #slicing first row off the dataframe
@@ -38,7 +40,7 @@ df_cn = df_cn.set_index('country_name_ITU')
 
 ## CHANGing data types
 df=df.convert_objects(convert_numeric=True)
-df=df[range(2000,2013+1)].astype(float)
+df=df[list(range(y1,y2+1))].astype(float)
 
 ## Join two dataframes so that country codes are available to use
 df=df.join(df_cn)
