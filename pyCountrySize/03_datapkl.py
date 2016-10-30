@@ -2,8 +2,8 @@
 #歧視無邊，回頭是岸。鍵起鍵落，情真情幻。
 datasource_sn=3
 
-import ConfigParser
-Config = ConfigParser.ConfigParser()
+import configparser
+Config = configparser.ConfigParser()
 Config.read("config.ini")
 
 dir_source = Config.get("Directory", 'source')
@@ -21,9 +21,11 @@ import pandas as pd
 import numpy as np
 
 ## Loading the TXT source file
-df = pd.io.parsers.read_table(os.path.join(dir_source,fn_input), sep="\t", index_col=0, header=None,
-                              names = ["sn","cn",subject_picked], thousands=',',
-                              dtype={"sn": np.int32, "cn": "S45", "IH": np.float})
+df = pd.io.parsers.read_table(os.path.join(dir_source,fn_input), sep="\s\s+", index_col=0, header=None,
+                              names = ["sn","cn",subject_picked], thousands=',')
+
+# dtype={"sn": np.int32, "cn": "S45", "IH": np.float}
+
 ##>>> df.head()
 ##               cn         IS
 ##sn                          
