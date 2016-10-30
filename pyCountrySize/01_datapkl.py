@@ -2,8 +2,8 @@
 #歧視無邊，回頭是岸。鍵起鍵落，情真情幻。
 datasource_sn=1
 
-import ConfigParser
-Config = ConfigParser.ConfigParser()
+import configparser
+Config = configparser.ConfigParser()
 Config.read("config.ini")
 
 dir_source = Config.get("Directory", 'source')
@@ -11,14 +11,14 @@ dir_inprocess =  Config.get("Directory",'inprocess')
 dir_outcome = Config.get("Directory",'outcome')
 fn_suffix = Config.get("Filename",'suffix')
 
-#file_name="WEOOct2014all.xls"
+#file_name defined in config.ini
 fn_input=Config.get("datasource{0}".format(datasource_sn),'filename')
 
 import os.path
 
 import pandas as pd
 ## Loading the XLS source file
-df = pd.io.parsers.read_table(os.path.join(dir_source,fn_input), thousands=',' , na_values=["n/a", "--"])
+df = pd.io.parsers.read_table(os.path.join(dir_source,fn_input), thousands=',' , na_values=["n/a", "--"], encoding="cp1252")
 
 ## REMOVing the last two lines from the data source:
 df=df.iloc[:-2]
@@ -35,11 +35,14 @@ df.columns=col_names
 df.rename(columns=lambda x: x.replace(" ","_"), inplace=True)
 
 ## CHANGing data types
-df[['WEO']]=df[['WEO']].astype(float)
+df[['WEO']]=df[['WEO']].astype(int)
 df[['ISO']]=df[['ISO']].astype(str)
 df[['Subject']]=df[['Subject']].astype(str)
 df[['Country_Notes']]=df[['Country_Notes']].astype(str)
-df.convert_objects(convert_numeric=True)
+df[['Estimates_Start_After']]=df[['Estimates_Start_After']].fillna(-1)
+df[['Estimates_Start_After']]=df[['Estimates_Start_After']].astype(int)
+
+#df.convert_objects(convert_numeric=True)
 
 ## Adding index points to the dataframe    'ISO', 'Subject'
 df.set_index(['ISO', 'Subject'], inplace=True)
